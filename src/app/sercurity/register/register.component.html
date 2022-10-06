@@ -1,0 +1,92 @@
+<body class="bg-white">
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+              <h3 class="login-heading mb-4">Sign up as a customer and receive special offers!</h3>
+              <form  [formGroup]="registerCustomerForm" (ngSubmit)="registerCustomer()">
+                <div class="form-label-group mb-4">
+                  <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter name">
+                  <label for="name">Enter name</label>
+
+                  <div
+                    *ngIf="!this.registerCustomerForm.get('name')?.valid && (this.registerCustomerForm.get('name')?.dirty ||this.registerCustomerForm.get('name')?.touched)" style="color: red">
+                    name is incorrect format
+                  </div>
+                  <!--                  <p style="color: red" >Blank is not allowed.</p>-->
+                </div>
+                <div class="form-label-group mb-4">
+                  <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control" placeholder="Enter a number phone">
+                  <label for="phoneNumber">Enter a number phone</label>
+                  <div
+                    *ngIf="!this.registerCustomerForm.get('phoneNumber')?.valid && (this.registerCustomerForm.get('phoneNumber')?.dirty ||this.registerCustomerForm.get('phoneNumber')?.touched)" style="color: red">
+                    phoneNumber is incorrect format
+                  </div>
+                  <!--                  <p style="color: red" >Blank is not allowed, start with 0, includes 10 numbers</p>-->
+                </div>
+                <div class="form-label-group mb-4" >
+                  <!--                  <input type="text" id="avatar" formControlName="avatar" class="form-control" placeholder="Enter avatar">-->
+                  <input type="file"
+                         id="avatar"
+                         #uploadFile
+                         (change)="UploadFileImg()"
+                         name="image"
+                         autocomplete="off"
+                         class="form-control"
+                  />
+                  <label for="avatar" class="text-right">Account's avatar</label>
+                  <!--                  <p style="color: red" >Blank is not allowed.</p>-->
+                </div>
+                <div class="form-label-group mb-4">
+                  <input type="text" id="address" formControlName="address" class="form-control" placeholder="Enter address">
+                  <label for="address">Enter address</label>
+                  <div
+                    *ngIf="!this.registerCustomerForm.get('address')?.valid && (this.registerCustomerForm.get('address')?.dirty ||this.registerCustomerForm.get('address')?.touched)" style="color: red">
+                    address is incorrect format
+                  </div>
+                  <!--                  <p style="color: red" >Blank is not allowed.</p>-->
+                </div>
+                <div formGroupName="appUser">
+                  <div class="form-label-group">
+                    <input type="email" id="username" formControlName="username" class="form-control"
+                           placeholder="Enter username">
+                    <label for="username">Enter email</label>
+                    <div
+                      *ngIf="!this.registerCustomerForm.get('username')?.valid && (this.registerCustomerForm.get('username')?.dirty ||this.registerCustomerForm.get('username')?.touched)" style="color: red">
+                      username is incorrect format
+                    </div>
+                    <!--                    <p style="color: red" >Blank is not allowed, format: example@gmail.com, maxlength: 50</p>-->
+                    <!--                    <p style="color: red" >Duplicate email, please enter another email</p>-->
+                  </div>
+                  <div class="form-label-group">
+                    <input type="password" id="password" formControlName="password" class="form-control"
+                           placeholder="Enter password">
+                    <label for="password">Enter password</label>
+                    <div
+                      *ngIf="!this.registerCustomerForm.get('password')?.valid && (this.registerCustomerForm.get('password')?.dirty ||this.registerCustomerForm.get('password')?.touched)" style="color: red">
+                      password is incorrect format
+                    </div>
+                    <!--                    <p style="color: red" >Blank is not allowed, minlength: 4, maxlength: 20</p>-->
+                  </div>
+                </div>
+
+                <button type="submit" [disabled]="!this.registerCustomerForm.valid" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" style="margin-right: 10px">Register</button>
+                <button class="btn btn-lg btn-outline-secondary btn-block btn-login text-uppercase font-weight-bold mb-2" routerLink="/">Cancel</button>
+                <div class="text-center pt-3">
+                  Do you already have an account? <a class="font-weight-bold" routerLink="/login">Login now</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
