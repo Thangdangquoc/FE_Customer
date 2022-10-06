@@ -44,6 +44,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("currentId",this.currentId);
 
         if (this.userToken.roles[0].name == "CUSTOMER" ){
+          alert("Đăng nhập thành công!")
+          Swal.fire(
+            'Logged in successfully!',
+            'You clicked the button!',
+            'success'
+          )
           // Swal.fire({
           //   position: 'center',
           //   icon: 'success',
@@ -54,21 +60,12 @@ export class LoginComponent implements OnInit {
           // })
           this.router.navigate(["/customer"]);
           console.log("CUSTOMER")
-        }else if (this.userToken.roles[0].name == "ROLE_ADMIN"){
-          this.router.navigate(["/register-customer"]);
-          console.log("ROLE_ADMIN")
-        }else if (this.userToken.roles[0].name == "ROLE_MERCHANT"){
-          this.router.navigate(["/register-customer"]);
-          console.log("ROLE_MERCHANT")
-        }else {
-          Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: '\n' +
-              'Login failed',
-            showConfirmButton: false,
-            timer: 1500
-          })
+        }else {alert("Lỗi rồi")
+          Swal.fire(
+            'Login failed',
+            'You clicked the button!',
+            'error'
+          )
         }
       }
     })

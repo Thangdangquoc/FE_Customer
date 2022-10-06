@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {UserToken} from "../../model/UserToken";
 import {AppUser} from "../../model/AppUser";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CustomerService} from "../../service/customer/customer.service";
 
 @Component({
   selector: 'app-navbar',
@@ -17,39 +18,17 @@ export class NavbarComponent implements OnInit {
   user !: AppUser;
   formLogin!: FormGroup;
   userToken?:UserToken;
-  currentId?: number;
+  currentId?: number | null;
 
-  constructor(public loginService: LoginService, private router: Router,) {
+  constructor(public loginService: LoginService,
+              private router: Router,
+              private customerService: CustomerService) {
   }
 
   ngOnInit(): void {
-    // this.checklogin();
-    // this.formLogin = new FormGroup({
-    //   username: new FormControl("", [Validators.required,Validators.email]),
-    //   password: new FormControl("", Validators.required)
-    // });
+  //   this.currentId = localStorage.getItem("currentId"),
+  // this.customerService.showDetailCustomer(this.currentId)
   }
-
-//   login() {
-//     this.user = {
-//       username: this.formLogin.value.username,
-//       password: this.formLogin.value.password,
-//
-//     };
-//     console.log(this.user);
-//     this.loginService.login(this.user).subscribe(data =>{
-//       this.userToken = data;
-//       console.log(this.userToken);
-//       console.log("tokent")
-//       if (this.userToken!=null) {
-//         this.currentId = data.id;
-//         console.log(this.currentId);
-//         // @ts-ignore
-//         localStorage.setItem("currentId", this.currentId);
-//       }
-//   })
-// }
-
   checklogin() {
     console.log(localStorage.getItem("currentId"))
     if (localStorage.getItem("currentId") == null) {
@@ -64,4 +43,9 @@ export class NavbarComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(["/"]);
   }
+
+
+
+
+
 }

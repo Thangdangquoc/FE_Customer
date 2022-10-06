@@ -96,7 +96,7 @@ export class RegisterComponent implements OnInit {
       this.loginService.registerCustomer(this.customer).subscribe((data:any) => {
         Swal.fire({
           position: 'center',
-          icon: 'success',
+          icon: 'info',
           title: 'Chúng tôi đang xác nhận',
           showConfirmButton: false,
           timer: 1500
@@ -126,7 +126,14 @@ export class RegisterComponent implements OnInit {
       })
 
     } else {
-      alert("Please checkout form!");
+      // alert("Please checkout form!");
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Please checkout form!',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.router.navigate(["/register-customer"]);
     }
 
