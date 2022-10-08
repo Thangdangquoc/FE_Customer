@@ -29,4 +29,8 @@ export class FoodCategoryService {
     return this.httpClient.get(this.API + `/food/${id}`)
   }
 
+  showListMerchant():Observable<any> {
+    return this.httpClient.get(this.API + `/merchant`)
+  }
+
 }

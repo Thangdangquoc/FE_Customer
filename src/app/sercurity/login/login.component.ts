@@ -43,24 +43,19 @@ export class LoginComponent implements OnInit {
         // @ts-ignore
         localStorage.setItem("currentId",this.currentId);
 
-        if (this.userToken.roles[0].name == "CUSTOMER" ){
-          alert("Đăng nhập thành công!")
-          Swal.fire(
-            'Logged in successfully!',
-            'You clicked the button!',
-            'success'
-          )
-          // Swal.fire({
-          //   position: 'center',
-          //   icon: 'success',
-          //   title: '\n' +
-          //     'Logged in successfully',
-          //   showConfirmButton: false,
-          //   timer: 1500
-          // })
-          this.router.navigate(["/customer"]);
+        if (this.userToken.roles[0].name == "CUSTOMER" ) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '\n' +
+              'Logged in successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.router.navigate(["/customer"])
           console.log("CUSTOMER")
-        }else {alert("Lỗi rồi")
+        }else {
+          console.log("lỗi")
           Swal.fire(
             'Login failed',
             'You clicked the button!',
@@ -76,5 +71,25 @@ export class LoginComponent implements OnInit {
 
   get password() {
     return this.formLogin.get('password');
+  }
+  ngAfterContentChecked(){
+    const script1 = document.createElement('script');
+    script1.src="../../../assets/register/vendor/jquery/jquery-3.3.1.slim.min.js";
+    document.body.appendChild(script1);
+   const script2 = document.createElement('script');
+    script2.src="../../../assets/register/vendor/bootstrap/js/bootstrap.bundle.min.js";
+    document.body.appendChild(script2);
+   const script3 = document.createElement('script');
+    script3.src="../../../assets/register/vendor/select2/js/select2.min.js";
+    document.body.appendChild(script3);
+   const script4 = document.createElement('script');
+    script4.src="../../../assets/register/vendor/owl-carousel/owl.carousel.js";
+    document.body.appendChild(script4);
+   const script5 = document.createElement('script');
+    script5.src="../../../assets/register/js/custom.js";
+    document.body.appendChild(script5);
+   const script6 = document.createElement('script');
+    script6.src="../../../assets/register/js/rocket-loader.min.js";
+    document.body.appendChild(script6);
   }
 }

@@ -1,5 +1,44 @@
 <app-navbar></app-navbar>
 <!-- Hero Section Begin -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="header__logo">
+        <a href="./index.html" style=" margin-left: 75px"><img src="../../../assets/img/logo1.png" alt=""></a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <nav class="header__menu" style="margin-top: 32px">
+        <ul>
+          <li class="active"><a routerLink="">Home</a></li>
+          <li><a href="./shop-grid.html">Shop</a></li>
+          <li><a href="#">Pages</a>
+            <ul class="header__menu__dropdown">
+              <li><a href="./shop-details.html">Shop Details</a></li>
+              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+              <li><a href="./checkout.html">Check Out</a></li>
+              <li><a href="./blog-details.html">Blog Details</a></li>
+            </ul>
+          </li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-lg-3">
+      <div class="header__cart" style="margin-top: 37px;">
+        <ul>
+          <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
+          <li><a (click)="checkCart()"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+        </ul>
+        <div class="header__cart__price">Hello: <span>EveryBody</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="humberger__open">
+    <i class="fa fa-bars"></i>
+  </div>
+</div>
 <section class="hero">
   <div class="container">
     <div class="row">
@@ -23,7 +62,7 @@
                 <span class="arrow_carrot-down"></span>
               </div>
               <input type="text" class="form-control" placeholder="What do you need?">
-              <button type="submit" class="btn btn-info">SEARCH</button>
+              <button type="submit" class="site-btn">SEARCH</button>
             </form>
           </div>
           <div class="hero__search__phone">
@@ -31,7 +70,7 @@
               <i class="fa fa-phone"></i>
             </div>
             <div class="hero__search__phone__text">
-              <h5>+65 11.188.888</h5>
+              <h5>+0376.327.787</h5>
               <span>support 24/7 time</span>
             </div>
           </div>
@@ -64,55 +103,6 @@
       </div>
     </div>
     <div class="row featured__filter">
-
-
-      <div class="col-lg-3 col-md-4 col-sm-6 " *ngFor=" let food of foods">
-        <div class="featured__item">
-          <div class="list-card-image">
-            <div class="star position-absolute"><span class="badge badge-success"> ({{food.sold}}+)</span></div>
-            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span
-              class="badge badge-dark">Promoted</span></div>
-            <a [routerLink]="['/detail-product', food.id]">
-              <img src="{{food.image}}" class="img-fluid item-img">
-            </a>
-            <ul class="featured__item__pic__hover">
-              <li><a href="#"><i class="fa fa-heart"></i></a></li>
-              <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-              <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-            </ul>
-          </div>
-          <div class="featured__item__text">
-            <h6><a [routerLink]="['/detail-food', food.id]">{{food.name}}</a></h6>
-            <h5>{{food.price}}VNĐ</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-sm-6" *ngFor=" let food of foods">
-        <div class="featured__item">
-          <div class="featured__item__pic set-bg" data-setbg="../../../assets/img/featured/feature-2.jpg">
-            <ul class="featured__item__pic__hover">
-              <li><a href="#"><i class="fa fa-heart"></i></a></li>
-              <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-              <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-            </ul>
-          </div>
-          <div class="featured__item__text">
-            <h6><a [routerLink]="['/detail-food', food.id]">{{food.name}}</a></h6>
-            <h5>{{food.price}}VNĐ</h5>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="col-md-9">
-
-    <div class="row">
       <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let food of foods">
         <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
           <div class="list-card-image">
@@ -122,13 +112,14 @@
             <div class="member-plan position-absolute"><span
               class="badge badge-dark">Promoted</span></div>
             <a [routerLink]="['/detail-product', food.id]">
-              <img src="{{food.image}}" class="img-fluid item-img">
+<!--              <img src="{{food.image}}" class="img-fluid item-img">-->
+              <img src="../../../assets/img/product/food1.jpg" class="img-fluid item-img">
             </a>
           </div>
           <div class="p-3 position-relative">
             <div class="list-card-body">
-              <h6 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-food', food.id]"
-                                                             class="text-black">{{food.name}}</a></h6>
+              <h5 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-food', food.id]"
+                                                             class="text-black">{{food.name}}</a></h5>
               <br>
               <!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
               <a [routerLink]="['/detail-merchant', food.merchant.id]" class="text-gray mb-3 time"><span
@@ -140,10 +131,71 @@
               <p class="text-gray mb-3"><span><i class="icofont-address-book"></i></span> {{food.merchant.address}}</p>
 
             </div>
-            <div class="list-card-badge" style="text-align: right
-">
-              <span class="badge badge-success">Price</span> {{food.price}} VND
+            <div class="list-card-badge" style="text-align: right;font-size: 17px" >
+              <div>
+              <i class="fa fa-heart" style="margin-right: 10px"></i>
+              <i class="fa fa-retweet" style="margin-right: 10px"></i>
+              <i class='fas fa-cart-plus' style="margin-right: 10px" (click)="checkCart()"></i></div>
+              <span class="badge badge-success" style="margin-right: 5px">Price</span >{{food.price}} VND
             </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Latest Product Section End -->
+
+<!-- Merchant Section Begin -->
+<section class="featured spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title">
+          <h2>Orther Merchant</h2>
+        </div>
+<!--        <div class="featured__controls" style="    display: flex;-->
+<!--    justify-content: space-evenly;     width: 30%;-->
+<!--    margin: 0 auto;">-->
+<!--          <ul *ngFor="let category of categoryList">-->
+<!--            <li data-filter=".oranges">{{category.nameCategory}}</li>-->
+<!--          </ul>-->
+<!--        </div>-->
+      </div>
+    </div>
+    <div class="row featured__filter">
+      <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let merchant of merchantList">
+        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+          <div class="list-card-image">
+            <div class="star position-absolute"><span class="badge badge-success"></span></div>
+            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+              class="icofont-heart"></i></a></div>
+            <div class="member-plan position-absolute"><span
+              class="badge badge-dark">Promoted</span></div>
+            <a>
+              <img src="{{merchant.avatar}}" class="img-fluid item-img">
+            </a>
+          </div>
+          <div class="p-3 position-relative">
+            <div class="list-card-body">
+              <h6 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-merchant', merchant.id]"
+                                                             class="text-black">{{merchant.name}}</a></h6>
+              <br>
+              <!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
+              <a [routerLink]="['/detail-merchant',merchant.id]" class="text-gray mb-3 time"><span
+                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                class="icofont-home"></i> {{merchant.name}}</span> </a>
+              <br>
+              <br>
+              <!--                  <span class="float-right text-black-50"> {{}}</span>-->
+              <p class="text-gray mb-3"><span><i class="icofont-address-book"></i></span> {{merchant.address}}</p>
+
+            </div>
+            <!--                <div class="list-card-badge" style="text-align: right-->
+            <!--">-->
+            <!--                  <span class="badge badge-success">Price</span> {{food.price}} VND-->
+            <!--                </div>-->
           </div>
         </div>
       </div>
@@ -153,5 +205,6 @@
 
 </section>
 <!-- Latest Product Section End -->
+
 
 <app-footer></app-footer>

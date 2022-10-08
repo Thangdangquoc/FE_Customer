@@ -1,5 +1,44 @@
 <app-navbar></app-navbar>
 <!-- Hero Section Begin -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="header__logo">
+        <a href="./index.html" style=" margin-left: 75px"><img src="../../../assets/img/logo1.png" alt=""></a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <nav class="header__menu" style="margin-top: 32px">
+        <ul>
+          <li class="active"><a routerLink="">Home</a></li>
+          <li><a href="./shop-grid.html">Shop</a></li>
+          <li><a href="#">Pages</a>
+            <ul class="header__menu__dropdown">
+              <li><a href="./shop-details.html">Shop Details</a></li>
+              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+              <li><a href="./checkout.html">Check Out</a></li>
+              <li><a href="./blog-details.html">Blog Details</a></li>
+            </ul>
+          </li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-lg-3">
+      <div class="header__cart" style="margin-top: 37px;">
+        <ul>
+          <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
+          <li><a (click)="checkCart()"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+        </ul>
+        <div class="header__cart__price">Hello: <span>EveryBody</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="humberger__open">
+    <i class="fa fa-bars"></i>
+  </div>
+</div>
 <section class="hero hero-normal">
   <div class="container">
     <div class="row">
@@ -90,12 +129,13 @@
           <div class="product__details__quantity">
             <div class="quantity">
               <div class="pro-qty">
-                <input type="text" value="1">
+
+<!--                <input type="text" value="1">-->
               </div>
             </div>
           </div>
-          <a href="#" class="primary-btn">ADD TO CARD</a>
-          <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+          <a class="primary-btn" (click)="checkCart()">ADD TO CARD</a>
+          <a class="heart-icon"><span class="icon_heart_alt"></span></a>
           <ul>
             <li><b>Merchant :</b> <span [routerLink]="['/detail-merchant', food.merchant.id]">{{food.merchant.name}}</span></li>
             <li><b>Category :</b> <span>{{food.foodCategory.nameCategory}}</span></li>
@@ -137,8 +177,8 @@
             <div class="tab-pane" id="tabs-2" role="tabpanel">
               <div class="product__details__tab__desc">
                 <h6>Food Infomation</h6>
-                <p>{{food.merchant.name}}</p>
-                <p>{{food.merchant.address}}</p>
+                <p>Served by: {{food.merchant.name}}</p>
+                <p>Address: {{food.merchant.address}}</p>
               </div>
             </div>
             <div class="tab-pane" id="tabs-3" role="tabpanel">
