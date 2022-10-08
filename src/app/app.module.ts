@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './sercurity/login/login.component';
@@ -18,6 +17,11 @@ import { DetailMerchantComponent } from './homeshow/detail-merchant/detail-merch
 import { DetailCustomerComponent } from './customer/detail-customer/detail-customer.component';
 import { HomeCustomerComponent } from './customer/home-customer/home-customer.component';
 
+import { CartComponent } from './cart/cart.component';
+import {RouterModule} from "@angular/router";
+import { DetailFoodAddToCartComponent } from './customer/detail-food-add-to-cart/detail-food-add-to-cart.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +33,9 @@ import { HomeCustomerComponent } from './customer/home-customer/home-customer.co
     DetailFoodComponent,
     DetailMerchantComponent,
     DetailCustomerComponent,
-    HomeCustomerComponent
+    HomeCustomerComponent,
+    CartComponent,
+    DetailFoodAddToCartComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,7 @@ import { HomeCustomerComponent } from './customer/home-customer/home-customer.co
     ReactiveFormsModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    RouterModule
 
   ],
   providers: [],

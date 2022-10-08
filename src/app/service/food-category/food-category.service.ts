@@ -12,6 +12,7 @@ export class FoodCategoryService {
   showListFood(): Observable<any>{
     return this.httpClient.get<any>(this.API);
   }
+
   showFoodByCategory(id: number): Observable<any> {
     return this.httpClient.get(this.API + `/category/${id}`)
   }
