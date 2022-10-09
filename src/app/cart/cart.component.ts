@@ -46,4 +46,11 @@ export class CartComponent implements OnInit {
       }
     })
   }
+
+  close(id:number) {
+    this.cartService.deleteItem(id).subscribe((data:any)=>{
+      console.log(data);
+      this.ngOnInit();
+    })
+  }
 }

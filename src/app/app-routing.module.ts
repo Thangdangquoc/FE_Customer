@@ -8,6 +8,7 @@ import {DetailMerchantComponent} from "./homeshow/detail-merchant/detail-merchan
 import {HomeCustomerComponent} from "./customer/home-customer/home-customer.component";
 import {CartComponent} from "./cart/cart.component";
 import {DetailFoodAddToCartComponent} from "./customer/detail-food-add-to-cart/detail-food-add-to-cart.component";
+import {DetailCustomerComponent} from "./customer/detail-customer/detail-customer.component";
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
@@ -36,6 +37,10 @@ const routes: Routes = [{
   {
     path: 'detail-food-add-to-cart/:id',
     component: DetailFoodAddToCartComponent,
+  },
+  {
+    path: 'detail-customer',
+    component: DetailCustomerComponent,
   }
 ];
 

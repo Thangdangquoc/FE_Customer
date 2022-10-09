@@ -22,7 +22,7 @@ export class CartService {
     return this.httpClient.post<OrderDetail>("http://localhost:8080/api/order/item", item)
   }
 
-  deleteItem(idItem?: number):Observable<OrderDetail>{
+  deleteItem(idItem?: number):Observable<any>{
     return this.httpClient.delete("http://localhost:8080/api/order/item/" + idItem)
   }
 

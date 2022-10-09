@@ -145,7 +145,7 @@
               <td class="shoping__cart__total">
                 {{o!.quantity*o!.food!.price}}
               </td>
-              <td class="shoping__cart__item__close">
+              <td class="shoping__cart__item__close" (click)="close(o!.id)">
                 <span class="icon_close"></span>
               </td>
             </tr>

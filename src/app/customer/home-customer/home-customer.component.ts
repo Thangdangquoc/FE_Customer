@@ -41,4 +41,12 @@ export class HomeCustomerComponent implements OnInit {
       console.log(data+":"+this.foods);
     })
   }
+
+  findFoodByLikeName(value: string) {
+    this.homeService.showAllFoodByName(value).subscribe((data:any)=>{
+      this.foods = data;
+      console.log(this.foods);
+    })
+
+  }
 }

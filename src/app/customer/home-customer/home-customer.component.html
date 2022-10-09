@@ -23,7 +23,7 @@
                 All Categories
                 <span class="arrow_carrot-down"></span>
               </div>
-              <input type="text" class="form-control" placeholder="What do you need?">
+              <input type="text" class="form-control" placeholder="What do you need?" #find (input)="findFoodByLikeName(find.value)">
               <button type="submit" class="btn btn-info">SEARCH</button>
             </form>
           </div>

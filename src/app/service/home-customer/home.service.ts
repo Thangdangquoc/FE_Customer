@@ -25,4 +25,8 @@ export class HomeService {
     return this.httpClient.get("http://localhost:8080/api/customer/get-all-by-cate/"+id);
   }
 
+  showAllFoodByName(name: string):Observable<any>{
+    return this.httpClient.get("http://localhost:8080/api/customer/find-all-by-like-name/"+name);
+  }
+
 }
