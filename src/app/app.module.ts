@@ -17,6 +17,7 @@ import { DetailFoodComponent } from './homeshow/detail-food/detail-food.componen
 import { DetailMerchantComponent } from './homeshow/detail-merchant/detail-merchant.component';
 import { DetailCustomerComponent } from './customer/detail-customer/detail-customer.component';
 import { HomeCustomerComponent } from './customer/home-customer/home-customer.component';
+import { HoneMerchantComponent } from './homeshow/hone-merchant/hone-merchant.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { HomeCustomerComponent } from './customer/home-customer/home-customer.co
     DetailFoodComponent,
     DetailMerchantComponent,
     DetailCustomerComponent,
-    HomeCustomerComponent
+    HomeCustomerComponent,
+    HoneMerchantComponent,
+
   ],
   imports: [
     BrowserModule,

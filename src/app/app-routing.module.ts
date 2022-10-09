@@ -6,6 +6,7 @@ import {RegisterComponent} from "./sercurity/register/register.component";
 import {DetailFoodComponent} from "./homeshow/detail-food/detail-food.component";
 import {DetailMerchantComponent} from "./homeshow/detail-merchant/detail-merchant.component";
 import {HomeCustomerComponent} from "./customer/home-customer/home-customer.component";
+import {HoneMerchantComponent} from "./homeshow/hone-merchant/hone-merchant.component";
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,9 @@ const routes: Routes = [{
 },{
   path: 'detail-merchant/:id',
     component: DetailMerchantComponent,
+},{
+  path: 'home-merchant',
+    component: HoneMerchantComponent,
 },{
   path: 'customer',
     component: HomeCustomerComponent,
