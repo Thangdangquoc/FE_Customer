@@ -9,30 +9,38 @@ import {OrderDetail} from "../model/OrderDetail";
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  id!:any;
   subtotal:number = 0;
   orderDetails:OrderDetail[]=[];
   constructor(private cartService:CartService,
               private activatedRoute: ActivatedRoute,
-              private router: Router ) { }
+              private router: Router ) {
+    this.id = localStorage.getItem("currentId");
+  }
 
   ngOnInit(): void {
     this.showAllOrderDetail()
   }
 
   showAllOrderDetail(){
-    this.cartService.findAllItemByCustomerId(3).subscribe((data:OrderDetail[])=>{
+    this.cartService.findAllItemByCustomerId(this.id).subscribe((data:OrderDetail[])=>{
+      this.subtotal=0;
       this.orderDetails=data;
-      for (let i = 0; i < data.length; i++) {
-        // @ts-ignore
-        this.subtotal += data[i].quantity * data[i].food.price
-        console.log("total"+this.subtotal)
+      if (data==null){
+        this.subtotal=0;
+      }else {
+        for (let i = 0; i < data.length; i++) {
+          // @ts-ignore
+          this.subtotal += data[i].quantity * data[i].food.price;
+          console.log("total"+this.subtotal)
+        }
       }
     })
 
   }
 
   createOrders(){
-    this.cartService.createOrder(3).subscribe((data:any)=>{
+    this.cartService.createOrder(this.id).subscribe((data:any)=>{
       console.log(data);
       this.orderDetails=data;
       if (this.orderDetails!=null){
@@ -47,10 +55,10 @@ export class CartComponent implements OnInit {
     })
   }
 
-  close(id:number) {
+  close(id:number){
     this.cartService.deleteItem(id).subscribe((data:any)=>{
       console.log(data);
-      this.ngOnInit();
+      this.showAllOrderDetail();
     })
   }
 }

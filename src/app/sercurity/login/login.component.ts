@@ -59,10 +59,10 @@ export class LoginComponent implements OnInit {
           console.log("CUSTOMER")
         }else if (this.userToken.roles[0].name == "ADMIN"){
           this.router.navigate(["/register-customer"]);
-          console.log("ROLE_ADMIN")
+          console.log("ADMIN")
         }else if (this.userToken.roles[0].name == "MERCHANT"){
           this.router.navigate(["/register-customer"]);
-          console.log("ROLE_MERCHANT")
+          console.log("MERCHANT")
         }else {
           Swal.fire({
             position: 'center',

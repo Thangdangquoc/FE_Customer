@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
-<!-- Hero Section Begin -->
-<section class="hero hero-normal">
+<section class="hero">
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
@@ -10,203 +9,163 @@
             <span>All departments</span>
           </div>
           <ul>
-            <li><a href="#">Fresh Meat</a></li>
-            <li><a href="#">Vegetables</a></li>
-            <li><a href="#">Fruit & Nut Gifts</a></li>
-            <li><a href="#">Fresh Berries</a></li>
-            <li><a href="#">Ocean Foods</a></li>
-            <li><a href="#">Butter & Eggs</a></li>
-            <li><a href="#">Fastfood</a></li>
-            <li><a href="#">Fresh Onion</a></li>
-            <li><a href="#">Papayaya & Crisps</a></li>
-            <li><a href="#">Oatmeal</a></li>
-            <li><a href="#">Fresh Bananas</a></li>
+            <li><a (click)="showAllWaitingOrder()">Confirming Orders </a></li>
+            <li><a (click)="showAllAcceptOrder()">Order Payment</a></li>
+            <li><a (click)="displayProfile()"> Account Management</a></li>
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
-        <div class="hero__search">
-          <div class="hero__search__form">
-            <form action="#">
-              <div class="hero__search__categories">
-                All Categories
-                <span class="arrow_carrot-down"></span>
+<!--        <div class="hero__search">-->
+<!--          <div class="hero__search__form">-->
+<!--            <form action="#">-->
+<!--              <div class="hero__search__categories">-->
+<!--                All Categories-->
+<!--                <span class="arrow_carrot-down"></span>-->
+<!--              </div>-->
+<!--              <input type="text" class="form-control" placeholder="What do you need?" #find (input)="findFoodByLikeName(find.value)">-->
+<!--              <button type="submit" class="btn btn-info">SEARCH</button>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--          <div class="hero__search__phone">-->
+<!--            <div class="hero__search__phone__icon">-->
+<!--              <i class="fa fa-phone"></i>-->
+<!--            </div>-->
+<!--            <div class="hero__search__phone__text">-->
+<!--              <h5>+65 11.188.888</h5>-->
+<!--              <span>support 24/7 time</span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+        <div id="waiting_order" style="display: block">
+          <table class="table align-items-center mb-0"  >
+            <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">TotalPrice</th>
+              <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
+              <th class="text-secondary opacity-7"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let f of orders">
+              <td>
+                <div class="d-flex px-2 py-1">
+                  <div>
+                    <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="detailOrder(f.id)">
+
+                    </p>
+                  </div>
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
+                    <p class="text-xs text-secondary mb-0">{{f!.merchant!.name}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.priceTotal}}</p>
+              </td>
+              <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
+              <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
+              <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">
+                <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == false)" (click)="cancel(f.id)">Cancel</button>
+                <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="cancel(f.id)">Pay</button>
               </div>
-              <input type="text" class="form-control" placeholder="What do you need?">
-              <button type="submit" class="site-btn">SEARCH</button>
-            </form>
-          </div>
-          <div class="hero__search__phone">
-            <div class="hero__search__phone__icon">
-              <i class="fa fa-phone"></i>
-            </div>
-            <div class="hero__search__phone__text">
-              <h5>+65 11.188.888</h5>
-              <span>support 24/7 time</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Hero Section End -->
+            </tr>
+            </tbody>
+          </table >
 
-<!-- Product Details Section Begin -->
-<section class="product-details spad">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-md-6">
-        <div class="product__details__pic">
-          <div class="product__details__pic__item">
-            <img class="product__details__pic__item--large"
-                 [src]="">
-<!--                             src="../../../assets/img/product/details/product-details-1.jpg" alt="">-->
-          </div>
-          <div class="product__details__pic__slider owl-carousel">
-            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                 src="../../../assets/img/product/details/thumb-1.jpg" alt="">
-            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                 src="../../../assets/img/product/details/thumb-2.jpg" alt="">
-            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                 src="../../../assets/img/product/details/thumb-3.jpg" alt="">
-            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                 src="../../../assets/img/product/details/thumb-4.jpg" alt="">
-          </div>
+
+
         </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="product__details__text">
-<!--          <h3>{{food.name}}</h3>-->
-          <div class="product__details__rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <span>(18 reviews)</span>
-          </div>
-<!--          <div class="product__details__price">{{food.price}} VND</div>-->
-<!--          <p>{{food.description}}</p>-->
-          <div class="product__details__quantity">
-            <div class="quantity">
-              <div class="pro-qty">
-                <input type="text" value="1">
+        <div  id="accepted_table" style="display: none">
+        <table class="table align-items-center mb-0" >
+          <thead>
+          <tr>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">TotalPrice</th>
+            <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
+            <th class="text-secondary opacity-7"></th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let f of acceptedOrders">
+            <td>
+              <div class="d-flex px-2 py-1">
+                <div>
+                  <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="detailOrder(f.id)">
+
+                  </p>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
+                  <p class="text-xs text-secondary mb-0">{{f!.merchant!.name}}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+
+              <p class="text-xs text-secondary mb-0">{{f!.priceTotal}}</p>
+            </td>
+            <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
+            <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
+            <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">
+              <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == false)" (click)="cancel(f.id)">Cancel</button>
+              <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="cancel(f.id)">Pay</button>
+            </div>
+          </tr>
+          </tbody>
+        </table >
+        </div>
+
+
+        <div id="display_customer" style="display: none">
+          <form  [formGroup]="formUpdateCustomer" (ngSubmit)="updateCustomer()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name:</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">PhoneNumber:</label>
+              <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" formControlName="phoneNumber">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Address:</label>
+              <input type="email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" formControlName="address">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" formControlName="appUser" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Avatar</label>
+              <input type="file" class="form-control" id="exampleInputPassword1" formControlName="avatar" #uploadFile (change)="UploadFileImg()">
+              <div>
+                <img *ngIf="!arrayPicture1" [src]="avatar1"style="width: 30%; height: 30%">
+                <img *ngIf="arrayPicture1" [src]="arrayPicture1"style="width: 30%; height: 30%" >
               </div>
             </div>
-          </div>
-<!--          <p (click)="addToCart(food.id)" class="primary-btn" style="cursor: pointer">ADD TO CARD</p>-->
-          <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-          <ul>
-<!--            <li><b>Merchant :</b> <span [routerLink]="['/detail-merchant', food.merchant.id]">{{food.merchant.name}}</span></li>-->
-<!--            <li><b>Category :</b> <span>{{food.foodCategory.nameCategory}}</span></li>-->
-<!--            <li><b>Address :</b> <span>{{food.merchant.address}}</span></li>-->
-<!--            <li><b>Description :</b> <span>{{food.description}}</span></li>-->
-            <!--            <li><b>Share on</b>-->
-            <!--              <div class="share">-->
-            <!--                <a href="#"><i class="fa fa-facebook"></i></a>-->
-            <!--                <a href="#"><i class="fa fa-twitter"></i></a>-->
-            <!--                <a href="#"><i class="fa fa-instagram"></i></a>-->
-            <!--                <a href="#"><i class="fa fa-pinterest"></i></a>-->
-            <!--              </div>-->
-            <!--            </li>-->
-          </ul>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+
+
         </div>
-      </div>
-      <div class="col-lg-12">
-        <div class="product__details__tab">
-          <ul class="nav nav-tabs" role="tablist">
-            <!--            <li class="nav-item">-->
-            <!--              <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"-->
-            <!--                 aria-selected="true">Description</a>-->
-            <!--            </li>-->
-            <!--            <li class="nav-item">-->
-            <!--              <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"-->
-            <!--                 aria-selected="false">Information</a>-->
-            <!--            </li>-->
-            <!--            <li class="nav-item">-->
-            <!--              <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"-->
-            <!--                 aria-selected="false">Reviews <span>(1)</span></a>-->
-            <!--            </li>-->
-          </ul>
-          <!--          <div class="tab-content">-->
-          <!--            <div class="tab-pane active" id="tabs-1" role="tabpanel">-->
-          <!--              <div class="product__details__tab__desc">-->
-          <!--                <h6>Food Infomation</h6>-->
-          <!--                <p>{{food.description}}</p>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--            <div class="tab-pane" id="tabs-2" role="tabpanel">-->
-          <!--              <div class="product__details__tab__desc">-->
-          <!--                <h6>Food Infomation</h6>-->
-          <!--                <p>{{food.merchant.name}}</p>-->
-          <!--                <p>{{food.merchant.address}}</p>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--            <div class="tab-pane" id="tabs-3" role="tabpanel">-->
-          <!--              <div class="product__details__tab__desc">-->
-          <!--                <h6>Products Infomation</h6>-->
-          <!--                <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.-->
-          <!--                  Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.-->
-          <!--                  Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam-->
-          <!--                  sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo-->
-          <!--                  eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.-->
-          <!--                  Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent-->
-          <!--                  sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac-->
-          <!--                  diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante-->
-          <!--                  ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;-->
-          <!--                  Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.-->
-          <!--                  Proin eget tortor risus.</p>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
-        </div>
+
       </div>
     </div>
   </div>
+</section><!-- Hero Section Begin -->
 
-
-  <div class="col-md-9">
-
-    <div class="row">
-      <div class="col-md-4 col-sm-6 mb-4 pb-2" >
-        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-<!--            <div class="star position-absolute"><span class="badge badge-success"> ({{food.sold}}+)</span></div>-->
-            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span
-              class="badge badge-dark">Promoted</span></div>
-<!--            <a [routerLink]="['/detail-food-add-to-cart', food.id]">-->
-<!--              <img src="{{food.image}}" class="img-fluid item-img">-->
-<!--            </a>-->
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-<!--              <h6 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-food-add-to-cart', food.id]"-->
-<!--                                                             class="text-black">{{food.name}}</a></h6>-->
-              <br>
-              <!--                                <p class="text-gray mb-3">Price: {{product.price}}</p>-->
-<!--              <a [routerLink]="['/detail-food-add-to-cart', food.merchant.id]" class="text-gray mb-3 time"><span-->
-<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i>-->
-<!--                </i> {{food.merchant.name}}</span> </a>-->
-              <br>
-              <br>
-              <!--                  <span class="float-right text-black-50"> {{}}</span>-->
-<!--              <p class="text-gray mb-3"><span><i class="icofont-address-book"></i></span> {{food.merchant.address}}</p>-->
-
-            </div>
-            <div class="list-card-badge" style="text-align: right
-">
-<!--              <span class="badge badge-success">Price</span> {{food.price}} VND-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
 <!-- Product Details Section End -->
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->
 

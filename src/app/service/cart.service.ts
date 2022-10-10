@@ -38,4 +38,15 @@ export class CartService {
   //   return this.httpClient.
   // }
 
+  showWaitingOrder(id:number):Observable<any>{
+    return this.httpClient.get<any>("http://localhost:8080/api/order/find-order-by-customer/" + id)
+  }
+
+  cancelOrder(id: number):Observable<any>{
+    return this.httpClient.get<any>("http://localhost:8080/api/order/cancel-order/" + id)
+  }
+
+  showAllAcceptedOrder(id:number):Observable<any>{
+    return this.httpClient.get<any>("http://localhost:8080/api/order/find-order-accepted-by-customer/" + id)
+  }
 }

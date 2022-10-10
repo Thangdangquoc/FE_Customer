@@ -12,6 +12,7 @@ import {CartService} from "../../service/cart.service";
   styleUrls: ['./detail-food-add-to-cart.component.css']
 })
 export class DetailFoodAddToCartComponent implements OnInit {
+  idC: any;
   orderDetails: OrderDetail [] = []
   discountItem: number = 0;
   listFood: Food [] = []
@@ -25,6 +26,7 @@ export class DetailFoodAddToCartComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private cartService: CartService) {
 
+    this.idC = localStorage.getItem("currentId");
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
       this.getFood();
@@ -50,7 +52,7 @@ export class DetailFoodAddToCartComponent implements OnInit {
   addToCart(id: number) {
    let orderDetail = {
       cart: {
-        id:1
+        id:this.idC
       },
      food:{
         id: id
