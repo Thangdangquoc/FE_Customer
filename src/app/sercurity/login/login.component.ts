@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 export class LoginComponent implements OnInit {
   userToken?:UserToken;
   currentId?: number;
+  email!:string;
   user?: AppUser;
   formLogin!: FormGroup;
   constructor(private loginService: LoginService,
@@ -39,9 +40,11 @@ export class LoginComponent implements OnInit {
       console.log("token")
       if (this.userToken!=null){
         this.currentId = data.id;
+        this.email = data.username;
         console.log(this.currentId);
         // @ts-ignore
         localStorage.setItem("currentId",this.currentId);
+        localStorage.setItem("email",this.email);
 
         localStorage.setItem("user",JSON.stringify(data));
 

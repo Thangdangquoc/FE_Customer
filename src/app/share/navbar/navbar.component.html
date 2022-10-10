@@ -4,36 +4,33 @@
   <div class="header__top">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-6">
-          <div class="header__top__left">
+        <div class="col-lg-6 col-md-6" *ngIf="checklogin()" routerLink="/detail-customer">
+          <div class="header__top__left" >
             <ul>
-              <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+              <li><i class="fa fa-envelope"></i>{{email}}</li>
               <li>Free Shipping for all Order of $99</li>
             </ul>
           </div>
         </div>
         <div class="col-lg-6 col-md-6">
           <div class="header__top__right">
-            <div class="header__top__right__social">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-              <a href="#"><i class="fa fa-pinterest-p"></i></a>
+            <div class="header__top__right__social" >
+
+<!--              <a href="#"><i class="fa fa-facebook"></i></a>-->
+<!--              <a href="#"><i class="fa fa-twitter"></i></a>-->
+<!--              <a href="#"><i class="fa fa-linkedin"></i></a>-->
+<!--              <a href="#"><i class="fa fa-pinterest-p"></i></a>-->
             </div>
-            <div class="header__top__right__language">
-              <img src="../../../assets/img/language.png" alt="">
-              <div>English</div>
-              <span class="arrow_carrot-down"></span>
-              <ul>
-                <li><a href="#">Spanis</a></li>
-                <li><a href="#">English</a></li>
-              </ul>
+            <div class="header__top__right__language" *ngIf="checklogin()" routerLink="/cart">
+              <mat-icon>add_shopping_cart</mat-icon>
             </div>
             <div class="header__top__right__auth">
               <a routerLink="/login" *ngIf="!checklogin()"><i class="fa fa-user"></i> Login</a>
               <a (click)="logOut()" *ngIf="checklogin()"><i class="fa fa-user"></i> Logout</a>
             </div>
+
           </div>
+
         </div>
       </div>
     </div>

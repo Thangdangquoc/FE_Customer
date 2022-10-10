@@ -20,7 +20,8 @@ import { HomeCustomerComponent } from './customer/home-customer/home-customer.co
 import { CartComponent } from './cart/cart.component';
 import {RouterModule} from "@angular/router";
 import { DetailFoodAddToCartComponent } from './customer/detail-food-add-to-cart/detail-food-add-to-cart.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -36,8 +37,10 @@ import { DetailFoodAddToCartComponent } from './customer/detail-food-add-to-cart
     HomeCustomerComponent,
     CartComponent,
     DetailFoodAddToCartComponent,
+
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -46,7 +49,8 @@ import { DetailFoodAddToCartComponent } from './customer/detail-food-add-to-cart
     ReactiveFormsModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

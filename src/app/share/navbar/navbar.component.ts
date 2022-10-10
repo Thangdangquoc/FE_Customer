@@ -18,11 +18,16 @@ export class NavbarComponent implements OnInit {
   formLogin!: FormGroup;
   userToken?:UserToken;
   currentId?: number;
+  email!:any;
 
   constructor(public loginService: LoginService, private router: Router,) {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem("email")!=null){
+      this.email = localStorage.getItem("email");
+    }
+
     // this.checklogin();
     // this.formLogin = new FormGroup({
     //   username: new FormControl("", [Validators.required,Validators.email]),
@@ -51,7 +56,8 @@ export class NavbarComponent implements OnInit {
 // }
 
   checklogin() {
-    console.log(localStorage.getItem("currentId"))
+    console.log(localStorage.getItem("currentId"));
+
     if (localStorage.getItem("currentId") == null) {
       return false;
     } else {
