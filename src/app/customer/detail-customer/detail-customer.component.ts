@@ -14,6 +14,7 @@ import {HomeService} from "../../service/home-customer/home.service";
   styleUrls: ['./detail-customer.component.css']
 })
 export class DetailCustomerComponent implements OnInit {
+
   avatar1:string="";
   customer!: Customer;
   formUpdateCustomer!: FormGroup;
@@ -30,7 +31,9 @@ export class DetailCustomerComponent implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage,
-              private homeService:HomeService) { }
+              private homeService:HomeService) {
+    this.idC = localStorage.getItem("currentId");
+  }
 
   ngOnInit(): void {
     this.showAllWaitingOrder();
@@ -49,7 +52,7 @@ export class DetailCustomerComponent implements OnInit {
   }
 
   showAllWaitingOrder(){
-    this.cartService.showWaitingOrder(3).subscribe((data:any)=>{
+    this.cartService.showWaitingOrder(this.idC).subscribe((data:any)=>{
       document.getElementById("waiting_order")!.style.display= "block";
       document.getElementById("accepted_table")!.style.display= "none";
       document.getElementById("display_customer")!.style.display= "none";
@@ -78,7 +81,7 @@ export class DetailCustomerComponent implements OnInit {
   }
 
   showAllAcceptOrder() {
-    this.cartService.showAllAcceptedOrder(3).subscribe((data:any)=>{
+    this.cartService.showAllAcceptedOrder(this.idC).subscribe((data:any)=>{
       this.acceptedOrders = data;
       // @ts-ignore
       document.getElementById("accepted_table").style.display= "block";
@@ -129,7 +132,7 @@ export class DetailCustomerComponent implements OnInit {
 
   }
   displayProfile() {
-    this.homeService.showCustomerProfile(3).subscribe((data:any)=>{
+    this.homeService.showCustomerProfile(this.idC).subscribe((data:any)=>{
       this.avatar1 = data!.avatar;
       this.formUpdateCustomer=new FormGroup({
         id:new FormControl(data.id),
@@ -144,5 +147,13 @@ export class DetailCustomerComponent implements OnInit {
       document.getElementById("accepted_table")!.style.display="none";
       document.getElementById("waiting_order")!.style.display="none";
     })
+  }
+
+  pay(id: any) {
+    this.homeService.payOrder(id).subscribe((data:any)=>{
+      alert("OK");
+      this.showAllAcceptOrder();
+    })
+
   }
 }

@@ -38,4 +38,8 @@ export class HomeService {
     return  this.httpClient.put<any>("http://localhost:8080/api/customer/update",customer);
   }
 
+  payOrder(id:number):Observable<any>{
+    return this.httpClient.get("http://localhost:8080/api/order/pay-order/"+id);
+  }
+
 }

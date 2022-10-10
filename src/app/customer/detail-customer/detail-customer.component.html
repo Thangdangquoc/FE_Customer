@@ -116,7 +116,7 @@
             <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
             <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">
               <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == false)" (click)="cancel(f.id)">Cancel</button>
-              <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="cancel(f.id)">Pay</button>
+              <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="pay(f.id)">Pay</button>
             </div>
           </tr>
           </tbody>
