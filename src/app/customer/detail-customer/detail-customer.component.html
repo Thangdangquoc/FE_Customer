@@ -38,6 +38,48 @@
 <!--          </div>-->
 <!--        </div>-->
 
+        <div id="order_detail" style="display: none">
+          <table class="table align-items-center mb-0">
+            <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">SubTotal</th>
+              <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
+              <th class="text-secondary opacity-7"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let f of orderDetails">
+              <td>
+                <div class="d-flex px-2 py-1">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">{{f!.food!.name}}</h6>
+                  </div>
+                </div>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.price}}</p>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.quantity}}</p>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.price*f!.quantity}}</p>
+              </td>
+            </tr>
+            </tbody>
+          </table >
+
+
+
+        </div>
+
 
         <div id="waiting_order" style="display: block">
           <table class="table align-items-center mb-0"  >
@@ -54,12 +96,12 @@
             <tr *ngFor="let f of orders">
               <td>
                 <div class="d-flex px-2 py-1">
-                  <div>
-                    <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="detailOrder(f.id)">
+<!--                  <div>-->
+<!--                    <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="findAllOrderDetailByOrderId(f.id)">-->
 
-                    </p>
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
+<!--                    </p>-->
+<!--                  </div>-->
+                  <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
                     <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
                     <p class="text-xs text-secondary mb-0">{{f!.merchant!.name}}</p>
                   </div>
@@ -97,12 +139,12 @@
           <tr *ngFor="let f of acceptedOrders">
             <td>
               <div class="d-flex px-2 py-1">
-                <div>
-                  <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="detailOrder(f.id)">
+<!--                <div>-->
+<!--                  <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="findAllOrderDetailByOrderId(f.id)">-->
 
-                  </p>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
+<!--                  </p>-->
+<!--                </div>-->
+                <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
                   <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
                   <p class="text-xs text-secondary mb-0">{{f!.merchant!.name}}</p>
                 </div>

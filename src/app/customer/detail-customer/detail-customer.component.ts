@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {finalize} from "rxjs/operators";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {HomeService} from "../../service/home-customer/home.service";
+import {OrderDetail} from "../../model/OrderDetail";
 
 @Component({
   selector: 'app-detail-customer',
@@ -14,6 +15,7 @@ import {HomeService} from "../../service/home-customer/home.service";
   styleUrls: ['./detail-customer.component.css']
 })
 export class DetailCustomerComponent implements OnInit {
+  orderDetails:OrderDetail[]=[];
 
   avatar1:string="";
   customer!: Customer;
@@ -40,6 +42,7 @@ export class DetailCustomerComponent implements OnInit {
     // @ts-ignore
     document.getElementById("accepted_table").style.display= "none";
     document.getElementById("display_customer")!.style.display= "none";
+    document.getElementById("order_detail")!.style.display="none";
 
     this.formUpdateCustomer = new FormGroup({
       id: new FormControl(""),
@@ -56,7 +59,7 @@ export class DetailCustomerComponent implements OnInit {
       document.getElementById("waiting_order")!.style.display= "block";
       document.getElementById("accepted_table")!.style.display= "none";
       document.getElementById("display_customer")!.style.display= "none";
-
+      document.getElementById("order_detail")!.style.display="none";
       this.orders = data;
     })
   }
@@ -88,6 +91,7 @@ export class DetailCustomerComponent implements OnInit {
       // @ts-ignore
       document.getElementById("waiting_order").style.display= "none";
       document.getElementById("display_customer")!.style.display= "none";
+      document.getElementById("order_detail")!.style.display="none";
       console.log(data);
     })
   }
@@ -146,6 +150,7 @@ export class DetailCustomerComponent implements OnInit {
       document.getElementById("display_customer")!.style.display="block";
       document.getElementById("accepted_table")!.style.display="none";
       document.getElementById("waiting_order")!.style.display="none";
+      document.getElementById("order_detail")!.style.display="none";
     })
   }
 
@@ -155,5 +160,16 @@ export class DetailCustomerComponent implements OnInit {
       this.showAllAcceptOrder();
     })
 
+  }
+
+  findAllOrderDetailByOrderId(id:number){
+    this.cartService.findAllOrderDetailByOrderId(id).subscribe((data:any)=>{
+      document.getElementById("display_customer")!.style.display="none";
+      document.getElementById("accepted_table")!.style.display="none";
+      document.getElementById("waiting_order")!.style.display="none";
+      document.getElementById("order_detail")!.style.display="block";
+      this.orderDetails = data;
+      console.log(this.orderDetails);
+    })
   }
 }
