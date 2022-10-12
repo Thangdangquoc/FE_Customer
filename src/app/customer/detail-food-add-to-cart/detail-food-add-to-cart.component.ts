@@ -12,6 +12,7 @@ import {CartService} from "../../service/cart.service";
   styleUrls: ['./detail-food-add-to-cart.component.css']
 })
 export class DetailFoodAddToCartComponent implements OnInit {
+  amount: number = 1;
   idC: any;
   orderDetails: OrderDetail [] = []
   discountItem: number = 0;
@@ -57,10 +58,11 @@ export class DetailFoodAddToCartComponent implements OnInit {
      food:{
         id: id
      },
-     quantity:1
+     quantity:this.amount
     };
     this.cartService.saveItemToCart(orderDetail).subscribe((data:any)=>{
         alert("ok");
+        this.amount = 1;
     })
 
   }

@@ -53,4 +53,7 @@ export class CartService {
   findAllOrderDetailByOrderId(id:number):Observable<any>{
     return this.httpClient.get<any>("http://localhost:8080/api/order/find-order-detail-by-order/" + id)
   }
+  showAllPaidOrderByCustomerId(id:number):Observable<any>{
+    return this.httpClient.get<any>("http://localhost:8080/api/order/find-order-paid-by-customer/" + id)
+  }
 }
