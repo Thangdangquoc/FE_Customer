@@ -10,8 +10,9 @@ export class FoodCategoryService {
   info: any;
   constructor(private httpClient: HttpClient) { }
   showListFood(): Observable<any>{
-    return this.httpClient.get<any>(this.API);
+    return this.httpClient.get<any>("http://localhost:8080/api/customer");
   }
+
   showFoodByCategory(id: number): Observable<any> {
     return this.httpClient.get(this.API + `/category/${id}`)
   }
@@ -28,5 +29,7 @@ export class FoodCategoryService {
   showFoodsByMerchant(id: number): Observable<any> {
     return this.httpClient.get(this.API + `/food/${id}`)
   }
-
+  showListMerchant():Observable<any> {
+    return this.httpClient.get(this.API + `/merchant`)
+  }
 }

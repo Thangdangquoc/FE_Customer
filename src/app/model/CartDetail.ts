@@ -3,12 +3,12 @@ import {Food} from "./Food";
 import {Merchant} from "./Merchant";
 
 export class CartDetail{
-  id: number;
-  cart: Cart;
+  id?: number;
+  cart?: Cart;
   food: Food;
-  merchant: Merchant;
+  merchant?: Merchant;
   quantity: number;
-  totalPrice: number;
+  totalPrice?: number;
 
 
   constructor(id: number, cart: Cart, food: Food, merchant: Merchant, quantity: number, totalPrice: number) {

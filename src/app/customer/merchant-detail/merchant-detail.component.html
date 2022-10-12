@@ -29,7 +29,7 @@
       <div class="header__cart" style="margin-top: 37px;">
         <ul>
           <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
-          <li><a (click)="checkCart()"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+          <li><a routerLink="/cart"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
         </ul>
         <div class="header__cart__price">Hello: <span>EveryBody</span></div>
       </div>
@@ -202,17 +202,17 @@
                             class="icofont-heart"></i></a></div>
                           <div class="member-plan position-absolute"><span
                             class="badge badge-dark">Promoted</span></div>
-                          <a [routerLink]="['/detail-product', food.id]">
+                          <a [routerLink]="['/detail-food-add-to-cart', food.id]">
                             <img src="{{food.image}}" class="img-fluid item-img" style="width: 300px">
                           </a>
                         </div>
                         <div class="p-3 position-relative">
                           <div class="list-card-body">
-                            <h5 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-food', food.id]"
+                            <h5 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-food-add-to-cart', food.id]"
                                                                            class="text-black">{{food.name}}</a></h5>
                             <br>
                             <!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
-                            <a [routerLink]="['/detail-merchant', food.merchant.id]" class="text-gray mb-3 time"><span
+                            <a [routerLink]="['/login-merchant-detail', food.merchant.id]" class="text-gray mb-3 time"><span
                               class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
                               class="icofont-home"></i> {{food.merchant.name}}</span> </a>
                             <br>
@@ -225,7 +225,7 @@
                             <div>
                               <i class="fa fa-heart" style="margin-right: 10px"></i>
                               <i class="fa fa-retweet" style="margin-right: 10px"></i>
-                              <i class='fas fa-cart-plus' style="margin-right: 10px" (click)="checkCart()"></i></div>
+                              <i class='fas fa-cart-plus' style="margin-right: 10px" (click)="addToCart(food.id)"></i></div>
                             <span class="badge badge-success" style="margin-right: 5px">Price</span >{{food.price}} VND
                           </div>
                         </div>

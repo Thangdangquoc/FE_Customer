@@ -6,7 +6,11 @@ import {RegisterComponent} from "./sercurity/register/register.component";
 import {DetailFoodComponent} from "./homeshow/detail-food/detail-food.component";
 import {DetailMerchantComponent} from "./homeshow/detail-merchant/detail-merchant.component";
 import {HomeCustomerComponent} from "./customer/home-customer/home-customer.component";
-
+import {CartComponent} from "./cart/cart.component";
+import {DetailFoodAddToCartComponent} from "./customer/detail-food-add-to-cart/detail-food-add-to-cart.component";
+import {DetailCustomerComponent} from "./customer/detail-customer/detail-customer.component";
+import * as path from "path";
+import {MerchantDetailComponent} from "./customer/merchant-detail/merchant-detail.component";
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
@@ -27,7 +31,24 @@ const routes: Routes = [{
 },{
   path: 'customer',
     component: HomeCustomerComponent,
-},];
+},
+  {
+    path: 'cart',
+    component: CartComponent,
+  },
+  {
+    path: 'detail-food-add-to-cart/:id',
+    component: DetailFoodAddToCartComponent,
+  },
+  {
+    path: 'detail-customer',
+    component: DetailCustomerComponent,
+  },
+  {
+    path: 'login-merchant-detail/:id',
+    component:MerchantDetailComponent,
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

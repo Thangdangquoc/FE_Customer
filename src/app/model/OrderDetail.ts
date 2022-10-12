@@ -1,18 +1,18 @@
-import {Product} from "./Food";
+import {Food} from "./Food";
 import {Order} from "./Order";
 
 export class OrderDetail {
   id: number;
-  product: Product;
+  food?: Food;
   order: Order;
   quantity: number;
   price: number;
   isRated: boolean;
 
 
-  constructor(id: number, product: Product, order: Order, quantity: number, price: number, isRated: boolean) {
+  constructor(id: number, food: Food, order: Order, quantity: number, price: number, isRated: boolean) {
     this.id = id;
-    this.product = product;
+    this.food = food;
     this.order = order;
     this.quantity = quantity;
     this.price = price;

@@ -1,1 +1,255 @@
-<p>detail-customer works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="header__logo">
+        <a href="./index.html" style=" margin-left: 75px"><img src="../../../assets/img/logo1.png" alt=""></a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <nav class="header__menu" style="margin-top: 32px">
+        <ul>
+          <li class="active"><a routerLink="/customer">Home</a></li>
+          <li><a href="./shop-grid.html">Shop</a></li>
+          <li><a href="#">Pages</a>
+            <ul class="header__menu__dropdown">
+              <li><a href="./shop-details.html">Shop Details</a></li>
+              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+              <li><a href="./checkout.html">Check Out</a></li>
+              <li><a href="./blog-details.html">Blog Details</a></li>
+            </ul>
+          </li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-lg-3">
+      <div class="header__cart" style="margin-top: 37px;">
+        <ul>
+          <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
+          <li><a ><i class="fa fa-shopping-bag"routerLink="/cart"></i> <span></span></a></li>
+        </ul>
+        <div class="header__cart__price">Hello: <span>EveryBody</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="humberger__open">
+    <i class="fa fa-bars"></i>
+  </div>
+</div>
+<section class="hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="hero__categories">
+          <div class="hero__categories__all">
+            <i class="fa fa-bars"></i>
+            <span>All departments</span>
+          </div>
+          <ul>
+            <li><a (click)="showAllWaitingOrder()">Confirming Orders </a></li>
+            <li><a (click)="showAllAcceptOrder()">Order Payment</a></li>
+            <li><a (click)="displayProfile()"> Account Management</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+<!--        <div class="hero__search">-->
+<!--          <div class="hero__search__form">-->
+<!--            <form action="#">-->
+<!--              <div class="hero__search__categories">-->
+<!--                All Categories-->
+<!--                <span class="arrow_carrot-down"></span>-->
+<!--              </div>-->
+<!--              <input type="text" class="form-control" placeholder="What do you need?" #find (input)="findFoodByLikeName(find.value)">-->
+<!--              <button type="submit" class="btn btn-info">SEARCH</button>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--          <div class="hero__search__phone">-->
+<!--            <div class="hero__search__phone__icon">-->
+<!--              <i class="fa fa-phone"></i>-->
+<!--            </div>-->
+<!--            <div class="hero__search__phone__text">-->
+<!--              <h5>+65 11.188.888</h5>-->
+<!--              <span>support 24/7 time</span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+        <div id="order_detail" style="display: none">
+          <table class="table align-items-center mb-0">
+            <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">SubTotal</th>
+              <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
+              <th class="text-secondary opacity-7"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let f of orderDetails">
+              <td>
+                <div class="d-flex px-2 py-1">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">{{f!.food!.name}}</h6>
+                  </div>
+                </div>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.price}}</p>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.quantity}}</p>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.price*f!.quantity}}</p>
+              </td>
+            </tr>
+            </tbody>
+          </table >
+
+
+
+        </div>
+
+
+
+
+        <div id="waiting_order" style="display: block">
+          <table class="table align-items-center mb-0"  >
+            <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">TotalPrice</th>
+              <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
+              <th class="text-secondary opacity-7"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let f of orders">
+              <td>
+                <div class="d-flex px-2 py-1">
+                  <div>
+                    <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="detailOrder(f.id)">
+
+                    </p>
+                  </div>
+                  <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
+                    <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
+                    <p class="text-xs text-secondary mb-0">{{f!.merchant!.name}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.priceTotal}}</p>
+              </td>
+              <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
+              <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
+              <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">
+                <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == false)" (click)="cancel(f.id)">Cancel</button>
+                <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="pay(f.id)">Pay</button>
+              </div>
+            </tr>
+            </tbody>
+          </table >
+
+
+
+        </div>
+        <div  id="accepted_table" style="display: none">
+        <table class="table align-items-center mb-0" >
+          <thead>
+          <tr>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">TotalPrice</th>
+            <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
+            <th class="text-secondary opacity-7"></th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let f of acceptedOrders">
+            <td>
+              <div class="d-flex px-2 py-1">
+                <div>
+                  <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="detailOrder(f.id)">
+
+                  </p>
+                </div>
+                <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
+                  <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
+                  <p class="text-xs text-secondary mb-0">{{f!.merchant!.name}}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+
+              <p class="text-xs text-secondary mb-0">{{f!.priceTotal}}</p>
+            </td>
+            <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
+            <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
+            <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">
+              <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == false)" (click)="cancel(f.id)">Cancel</button>
+              <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="pay(f.id)">Pay</button>
+            </div>
+          </tr>
+          </tbody>
+        </table >
+        </div>
+
+
+        <div id="display_customer" style="display: none">
+          <form  [formGroup]="formUpdateCustomer" (ngSubmit)="updateCustomer()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name:</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">PhoneNumber:</label>
+              <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" formControlName="phoneNumber">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Address:</label>
+              <input type="email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" formControlName="address">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" formControlName="appUser" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Avatar</label>
+              <input type="file" class="form-control" id="exampleInputPassword1" formControlName="avatar" #uploadFile (change)="UploadFileImg()">
+              <div>
+                <img *ngIf="!arrayPicture1" [src]="avatar1"style="width: 30%; height: 30%">
+                <img *ngIf="arrayPicture1" [src]="arrayPicture1"style="width: 30%; height: 30%" >
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section><!-- Hero Section Begin -->
+
+<!-- Product Details Section End -->
+<!--<app-footer></app-footer>-->
+

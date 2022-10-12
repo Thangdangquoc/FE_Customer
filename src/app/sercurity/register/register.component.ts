@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
         username: this.registerCustomerForm.value.appUser?.username,
         password: this.registerCustomerForm.value.appUser?.password,
         roles:[{
-          id: 2
+          id: 1
         }]
       },
       isAccept: false,
@@ -97,7 +97,7 @@ export class RegisterComponent implements OnInit {
         Swal.fire({
           position: 'center',
           icon: 'info',
-          title: 'Chúng tôi đang xác nhận',
+          title: 'Waiting for accept your account',
           showConfirmButton: false,
           timer: 1500
         })
@@ -108,7 +108,7 @@ export class RegisterComponent implements OnInit {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Chúng tôi đang xác nhận',
+            title: 'Waiting for accept your account',
             showConfirmButton: false,
             timer: 1500
           })

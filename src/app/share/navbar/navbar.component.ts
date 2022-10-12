@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
   formLogin!: FormGroup;
   userToken?:UserToken;
   currentId?: number | null;
+  email!:any;
+  avatar:any;
 
   constructor(public loginService: LoginService,
               private router: Router,
@@ -28,9 +30,16 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   //   this.currentId = localStorage.getItem("currentId"),
   // this.customerService.showDetailCustomer(this.currentId)
+    if (localStorage.getItem("email")!=null){
+      this.email = localStorage.getItem("email");
+    }
+    if (localStorage.getItem("avatar")!=null){
+      this.avatar = localStorage.getItem("avatar");
+    }
   }
   checklogin() {
-    console.log(localStorage.getItem("currentId"))
+    console.log(localStorage.getItem("currentId"));
+
     if (localStorage.getItem("currentId") == null) {
       return false;
     } else {
