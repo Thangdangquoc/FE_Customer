@@ -10,18 +10,12 @@
     <div class="col-lg-6">
       <nav class="header__menu" style="margin-top: 32px">
         <ul>
+          <li class="active"><a routerLink=""></a></li>
+          <li class="active"><a routerLink=""></a></li>
+          <li class="active"><a routerLink=""></a></li>
+
           <li class="active"><a routerLink="">Home</a></li>
-          <li><a href="./shop-grid.html">Shop</a></li>
-          <li><a href="#">Pages</a>
-            <ul class="header__menu__dropdown">
-              <li><a href="./shop-details.html">Shop Details</a></li>
-              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-              <li><a href="./checkout.html">Check Out</a></li>
-              <li><a href="./blog-details.html">Blog Details</a></li>
-            </ul>
-          </li>
-          <li><a href="./blog.html">Blog</a></li>
-          <li><a href="./contact.html">Contact</a></li>
+          <li><a routerLink="/list-merchant">List Merchant</a></li>
         </ul>
       </nav>
     </div>
@@ -61,7 +55,7 @@
 <!--                All Categories-->
 <!--                <span class="arrow_carrot-down"></span>-->
 <!--              </div>-->
-              <input type="text" class="form-control" placeholder="What do you need?">
+              <input type="text" class="form-control" placeholder="What do you need?" #find (input)="findFoodByLikeName(find.value)">
               <button type="submit" class="site-btn" style="width: 170px">SEARCH</button>
             </form>
           </div>

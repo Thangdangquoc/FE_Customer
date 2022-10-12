@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {FoodCategoryService} from "../../service/food-category/food-category.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {HomeService} from "../../service/home-customer/home.service";
 import {Page} from "../../model/Page";
 import {Food} from "../../model/Food";
 import {FoodCategory} from "../../model/FoodCategory";
-import Swal from "sweetalert2";
 import {Merchant} from "../../model/Merchant";
-import {HomeService} from "../../service/home-customer/home.service";
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-list-merchant',
+  templateUrl: './list-merchant.component.html',
+  styleUrls: ['./list-merchant.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ListMerchantComponent implements OnInit {
 
   constructor(
     private foodService: FoodCategoryService,
@@ -71,11 +71,16 @@ export class HomeComponent implements OnInit {
       console.log(data+":"+this.foods);
     })
   }
-  findFoodByLikeName(value: string) {
-    this.homeService.showAllFoodByName(value).subscribe((data:any)=>{
-      this.foods = data;
-      console.log(this.foods);
+findMerchantByAddress(address:string){
+    if (address!= null){
+      this.homeService.findMerchantByAddress(address).subscribe((data: any) =>{
+        this.merchantList = data
+      })
+    } if (address == ""){
+    this.foodService.showListMerchant().subscribe(data =>{
+      this.merchantList = data
     })
-
   }
+
+}
 }
