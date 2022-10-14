@@ -96,18 +96,18 @@
 <!--        </div>-->
       </div>
     </div>
-    <div class="row featured__filter">
+    <div class="row featured__filter" >
       <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let food of foods">
-        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="star position-absolute"><span class="badge badge-success"> ({{food.sold}}+)</span></div>
+        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm" >
+          <div class="list-card-image" >
+            <div class="star position-absolute"><span class="badge badge-success" > ({{food.sold}}+)</span></div>
             <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
               class="icofont-heart"></i></a></div>
             <div class="member-plan position-absolute"><span
               class="badge badge-dark">Promoted</span></div>
-            <a [routerLink]="['/detail-product', food.id]">
+            <a [routerLink]="['/detail-product', food.id]" >
               <!--              <img src="{{food.image}}" class="img-fluid item-img">-->
-              <img src="{{food.image}}" class="img-fluid item-img">
+              <img   src="{{food.image}}" class="img-fluid item-img">
             </a>
           </div>
           <div class="p-3 position-relative">
@@ -130,7 +130,11 @@
                 <i class="fa fa-heart" style="margin-right: 10px"></i>
                 <i class="fa fa-retweet" style="margin-right: 10px"></i>
                 <i class='fas fa-cart-plus' style="margin-right: 10px" (click)="checkCart()"></i></div>
-              <span class="badge badge-success" style="margin-right: 5px">Price</span >{{food.price}} VND
+             <p *ngIf="food?.isEmpty == false"  > <span class="badge badge-success" style="margin-right: 5px" >Price</span  ><del >{{food.price}}</del> VND</p>
+             <p *ngIf="food?.isEmpty == true" > <span class="badge badge-success" style="margin-right: 5px"  >Price</span >{{food.price}} VND</p>
+<!--              <span *ngIf="food?.isEmpty == true"  class="badge badge-success" style="margin-right: 5px">Price</span >{{food.price}} VND-->
+<!--              <td style="text-align: center; width: 15%"*ngIf="food.isEmpty == false"><span class="status text-success"  ></span> Out Sold</td>-->
+
             </div>
           </div>
         </div>
