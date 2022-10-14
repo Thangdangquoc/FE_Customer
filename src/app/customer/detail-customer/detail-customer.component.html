@@ -41,12 +41,67 @@
           <ul>
             <li><a (click)="showAllWaitingOrder()">Confirming Orders </a></li>
             <li><a (click)="showAllAcceptOrder()">Order Payment</a></li>
+            <li><a (click)="showAllPaidOrder()"> Paid Orders</a></li>
             <li><a (click)="displayProfile()"> Account Management</a></li>
           </ul>
         </div>
       </div>
       <div class="col-lg-9">
 
+        <div  id="paid_table" style="display: none">
+          <table class="table align-items-center mb-0" >
+            <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Price</th>
+              <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
+              <th class="text-secondary opacity-7"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let f of paidOrders">
+              <td>
+                <div class="d-flex px-2 py-1">
+                  <!--                <div>-->
+                  <!--                  <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="findAllOrderDetailByOrderId(f.id)">-->
+
+                  <!--                  </p>-->
+                  <!--                </div>-->
+                  <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
+                    <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
+                    <p class="text-xs text-secondary mb-0" style="font-size: 17px">{{f!.merchant!.name}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+
+                <p class="text-xs text-secondary mb-0">{{f!.priceTotal}}</p>
+              </td>
+              <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
+              <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
+              <!--              <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">-->
+              <!--                <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == false)" (click)="cancel(f.id)">Cancel</button>-->
+              <!--                <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="pay(f.id)">Pay</button>-->
+              <!--              </div>-->
+              <!--              <input type="text" class="form-control" placeholder="What do you need?" #find (input)="findFoodByLikeName(find.value)">-->
+              <!--              <button type="submit" class="btn btn-info">SEARCH</button>-->
+              <!--            </form>-->
+              <!--          </div>-->
+              <!--          <div class="hero__search__phone">-->
+              <!--            <div class="hero__search__phone__icon">-->
+              <!--              <i class="fa fa-phone"></i>-->
+              <!--            </div>-->
+              <!--            <div class="hero__search__phone__text">-->
+              <!--              <h5>+65 11.188.888</h5>-->
+              <!--              <span>support 24/7 time</span>-->
+              <!--            </div>-->
+              <!--          </div>-->
+              <!--        </div>-->
+            </tr>
+            </tbody>
+          </table >
+        </div>
         <div id="order_detail" style="display: none">
           <table class="table align-items-center mb-0">
             <thead>
@@ -97,7 +152,7 @@
             <thead>
             <tr>
               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">TotalPrice</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Price</th>
               <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
               <th class="text-secondary opacity-7"></th>
             </tr>
@@ -114,13 +169,13 @@
                   </div>
                   <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
                     <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
-                    <p class="text-xs text-secondary mb-0" style="font-size: 15px">{{f!.merchant!.name}}</p>
+                    <p class="text-xs text-secondary mb-0" style="font-size: 17px">{{f!.merchant!.name}}</p>
                   </div>
                 </div>
               </td>
               <td>
-                <h6 class="mb-0 text-sm"></h6><br>
-                <p class="text-xs text-secondary mb-0" style="font-size: 15px">{{f!.priceTotal}}</p>
+<h6 class="mb-0 text-sm"></h6><br>
+                <p class="text-xs text-secondary mb-0" style="font-size: 17px">{{f!.priceTotal}}</p>
               </td>
               <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
               <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
@@ -136,44 +191,44 @@
 
         </div>
         <div  id="accepted_table" style="display: none">
-        <table class="table align-items-center mb-0" >
-          <thead>
-          <tr>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">TotalPrice</th>
-            <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
-            <th class="text-secondary opacity-7"></th>
-          </tr>
-          </thead>
-          <tbody>
+          <table class="table align-items-center mb-0" >
+            <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Price</th>
+              <!--    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>-->
+              <th class="text-secondary opacity-7"></th>
+            </tr>
+            </thead>
+            <tbody>
 
-          <tr *ngFor="let f of acceptedOrders">
-            <td>
-              <div class="d-flex px-2 py-1">
-                <div>
-                  <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="detailOrder(f.id)">
+            <tr *ngFor="let f of acceptedOrders">
+              <td>
+                <div class="d-flex px-2 py-1">
+                  <div>
+                    <p data-bs-toggle="modal" data-bs-target="#myModal1" (click)="detailOrder(f.id)">
 
-                  </p>
+                    </p>
+                  </div>
+                  <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
+                    <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
+                    <p class="text-xs text-secondary mb-0" style="font-size: 17px;">{{f!.merchant!.name}}</p>
+                  </div>
                 </div>
-                <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
-                  <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
-                  <p class="text-xs text-secondary mb-0">{{f!.merchant!.name}}</p>
-                </div>
+              </td>
+              <td>
+                <h6 class="mb-0 text-sm"></h6><br>
+                <p class="text-xs text-secondary mb-0" style="font-size: 17px;">{{f!.priceTotal}}</p>
+              </td>
+              <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
+              <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
+              <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">
+                <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == false)" (click)="cancel(f.id)">Cancel</button>
+                <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="pay(f.id)">Pay</button>
               </div>
-            </td>
-            <td>
-
-              <p class="text-xs text-secondary mb-0">{{f!.priceTotal}}</p>
-            </td>
-            <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
-            <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->
-            <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">
-              <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == false)" (click)="cancel(f.id)">Cancel</button>
-              <button type="button" class="btn btn-primary" *ngIf="(f?.isAccept == true && f?.isPaid ==false)" (click)="pay(f.id)">Pay</button>
-            </div>
-          </tr>
-          </tbody>
-        </table >
+            </tr>
+            </tbody>
+          </table >
         </div>
 
 

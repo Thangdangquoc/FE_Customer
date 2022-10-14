@@ -28,6 +28,7 @@ export class DetailCustomerComponent implements OnInit {
   idC: any;
   acceptedOrders: Order[]=[];
   orders: Order[]=[];
+  paidOrders!: Order[];
   constructor(private cartService: CartService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -42,6 +43,7 @@ export class DetailCustomerComponent implements OnInit {
     document.getElementById("accepted_table").style.display= "none";
     document.getElementById("display_customer")!.style.display= "none";
     document.getElementById("order_detail")!.style.display="none";
+    document.getElementById("paid_table")!.style.display= "none";
 
     this.formUpdateCustomer = new FormGroup({
       id: new FormControl(""),
@@ -59,6 +61,7 @@ export class DetailCustomerComponent implements OnInit {
       document.getElementById("accepted_table")!.style.display= "none";
       document.getElementById("display_customer")!.style.display= "none";
       document.getElementById("order_detail")!.style.display="none";
+      document.getElementById("paid_table")!.style.display= "none";
 
       this.orders = data;
     })
@@ -117,6 +120,7 @@ export class DetailCustomerComponent implements OnInit {
       document.getElementById("waiting_order").style.display= "none";
       document.getElementById("display_customer")!.style.display= "none";
       document.getElementById("order_detail")!.style.display="none";
+      document.getElementById("paid_table")!.style.display= "none";
       console.log(data);
     })
   }
@@ -177,6 +181,7 @@ export class DetailCustomerComponent implements OnInit {
       document.getElementById("accepted_table")!.style.display="none";
       document.getElementById("waiting_order")!.style.display="none";
       document.getElementById("order_detail")!.style.display="none";
+      document.getElementById("paid_table")!.style.display= "none";
     })
   }
 
@@ -231,8 +236,22 @@ export class DetailCustomerComponent implements OnInit {
       document.getElementById("accepted_table")!.style.display="none";
       document.getElementById("waiting_order")!.style.display="none";
       document.getElementById("order_detail")!.style.display="block";
+      document.getElementById("paid_table")!.style.display= "none";
       this.orderDetails = data;
       console.log(this.orderDetails);
+    })
+  }
+  showAllPaidOrder() {
+    this.cartService.showAllPaidOrderByCustomerId(this.idC).subscribe((data:any)=>{
+      this.paidOrders = data;
+      // @ts-ignore
+      document.getElementById("accepted_table").style.display= "none";
+      document.getElementById("paid_table")!.style.display= "block";
+      // @ts-ignore
+      document.getElementById("waiting_order").style.display= "none";
+      document.getElementById("display_customer")!.style.display= "none";
+      document.getElementById("order_detail")!.style.display="none";
+      console.log(data);
     })
   }
 }
