@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
         username: new FormControl("", [Validators.required,Validators.email]),
         password: new FormControl("", [Validators.required,Validators.minLength(4), Validators.maxLength(20)]),
         roles: new FormArray([new FormGroup({
-          id: new FormControl("1")
+          id: new FormControl("2")
         })])
       })
     });
@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
         username: this.registerCustomerForm.value.appUser?.username,
         password: this.registerCustomerForm.value.appUser?.password,
         roles:[{
-          id: 1
+          id: 2
         }]
       },
       isAccept: false,

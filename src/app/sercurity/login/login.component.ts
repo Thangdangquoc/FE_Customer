@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         })
         console.log(this.userToken)
 
-        if (this.userToken.roles[0].name == "ROLE_CUSTOMER" ) {
+        if (this.userToken.roles[0].name == "CUSTOMER" ) {
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -76,11 +76,18 @@ export class LoginComponent implements OnInit {
         }
         }else {
         console.log("lỗi")
+        // Swal.fire({
+        //   position: 'center',
+        //   icon: 'info',
+        //   title: 'The account is not exist or has been locked',
+        //   showConfirmButton: false,
+        //   timer: 2000
+        // })
         Swal.fire({
           position: 'center',
-          icon: 'info',
+          icon: 'error',
           title: 'The account is not exist or has been locked',
-          showConfirmButton: false,
+          // showConfirmButton: false,
           timer: 2000
         })
       }

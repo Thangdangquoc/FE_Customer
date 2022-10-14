@@ -7,20 +7,11 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <nav class="header__menu" style="margin-top: 32px">
+      <nav class="header__menu" style="margin-top: 32px;text-align: center;">
         <ul>
           <li class="active"><a routerLink="/customer">Home</a></li>
-          <li><a href="./shop-grid.html">Shop</a></li>
-          <li><a href="#">Pages</a>
-            <ul class="header__menu__dropdown">
-              <li><a href="./shop-details.html">Shop Details</a></li>
-              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-              <li><a href="./checkout.html">Check Out</a></li>
-              <li><a href="./blog-details.html">Blog Details</a></li>
-            </ul>
-          </li>
-          <li><a href="./blog.html">Blog</a></li>
-          <li><a href="./contact.html">Contact</a></li>
+          <li><a routerLink="/detail-customer">Profile</a></li>
+          <li><a routerLink="/cart">My Cart</a>
         </ul>
       </nav>
     </div>
@@ -55,28 +46,6 @@
         </div>
       </div>
       <div class="col-lg-9">
-<!--        <div class="hero__search">-->
-<!--          <div class="hero__search__form">-->
-<!--            <form action="#">-->
-<!--              <div class="hero__search__categories">-->
-<!--                All Categories-->
-<!--                <span class="arrow_carrot-down"></span>-->
-<!--              </div>-->
-<!--              <input type="text" class="form-control" placeholder="What do you need?" #find (input)="findFoodByLikeName(find.value)">-->
-<!--              <button type="submit" class="btn btn-info">SEARCH</button>-->
-<!--            </form>-->
-<!--          </div>-->
-<!--          <div class="hero__search__phone">-->
-<!--            <div class="hero__search__phone__icon">-->
-<!--              <i class="fa fa-phone"></i>-->
-<!--            </div>-->
-<!--            <div class="hero__search__phone__text">-->
-<!--              <h5>+65 11.188.888</h5>-->
-<!--              <span>support 24/7 time</span>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
 
         <div id="order_detail" style="display: none">
           <table class="table align-items-center mb-0">
@@ -145,13 +114,13 @@
                   </div>
                   <div class="d-flex flex-column justify-content-center" (click)="findAllOrderDetailByOrderId(f.id)">
                     <h6 class="mb-0 text-sm">{{f!.createAt}}</h6>
-                    <p class="text-xs text-secondary mb-0">{{f!.merchant!.name}}</p>
+                    <p class="text-xs text-secondary mb-0" style="font-size: 15px">{{f!.merchant!.name}}</p>
                   </div>
                 </div>
               </td>
               <td>
-
-                <p class="text-xs text-secondary mb-0">{{f!.priceTotal}}</p>
+                <h6 class="mb-0 text-sm"></h6><br>
+                <p class="text-xs text-secondary mb-0" style="font-size: 15px">{{f!.priceTotal}}</p>
               </td>
               <!--    <td style="text-align: center; width: 15%" *ngIf="(f?.isAccept == false)"><span class="status text-success"  >&bull;</span> Cancel</td>-->
               <!--    <td style="text-align: center; width: 15%"  *ngIf="f?.isEmpty == false && f?.quantityStorage == 0 "><span class="status text-warning"  >&bull;</span> Inactive</td>-->

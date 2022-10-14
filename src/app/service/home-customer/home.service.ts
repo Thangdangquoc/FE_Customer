@@ -48,6 +48,8 @@ export class HomeService {
   payOrder(id: number): Observable<any> {
     return this.httpClient.get("http://localhost:8080/api/order/pay-order/" + id);
   }
-
+  findMerchantByAddress(address:string): Observable<any> {
+    return this.httpClient.get<any>("http://localhost:8080/api/home/find-by-address/" + address)
+  }
 
 }

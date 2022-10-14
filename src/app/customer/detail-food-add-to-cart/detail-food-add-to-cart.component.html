@@ -7,20 +7,11 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <nav class="header__menu" style="margin-top: 32px">
+      <nav class="header__menu" style="margin-top: 32px;text-align: center;">
         <ul>
           <li class="active"><a routerLink="/customer">Home</a></li>
-          <li><a href="./shop-grid.html">Shop</a></li>
-          <li><a href="#">Pages</a>
-            <ul class="header__menu__dropdown">
-              <li><a href="./shop-details.html">Shop Details</a></li>
-              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-              <li><a href="./checkout.html">Check Out</a></li>
-              <li><a href="./blog-details.html">Blog Details</a></li>
-            </ul>
-          </li>
-          <li><a href="./blog.html">Blog</a></li>
-          <li><a href="./contact.html">Contact</a></li>
+          <li><a routerLink="/detail-customer">Profile</a></li>
+          <li><a routerLink="/cart">My Cart</a>
         </ul>
       </nav>
     </div>
@@ -67,11 +58,7 @@
         <div class="hero__search">
           <div class="hero__search__form">
             <form action="#">
-              <div class="hero__search__categories">
-                All Categories
-                <span class="arrow_carrot-down"></span>
-              </div>
-              <input type="text" class="form-control" placeholder="What do you need?">
+              <input type="text" class="form-control" style=" width: 500px" placeholder="What do you need?">
               <button type="submit" class="site-btn">SEARCH</button>
             </form>
           </div>
@@ -80,7 +67,7 @@
               <i class="fa fa-phone"></i>
             </div>
             <div class="hero__search__phone__text">
-              <h5>+65 11.188.888</h5>
+              <h5 style="font-weight: bold; font-size: 15px">+0376.327.797</h5>
               <span>support 24/7 time</span>
             </div>
           </div>
@@ -116,7 +103,7 @@
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="product__details__text">
-          <h3>{{food.name}}</h3>
+          <h3 style="font-size: 30px; font-weight: bold;">{{food.name}}</h3>
           <div class="product__details__rating">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -129,7 +116,7 @@
           <p>{{food.description}}</p>
           <div class="product__details__quantity">
             <div class="quantity">
-              <div class="pro-qty">
+              <div _ngcontent-quh-c58 class="pro-qty">
                 <input type="number" [(ngModel)]="amount">
               </div>
             </div>
@@ -204,65 +191,18 @@
     </div>
   </div>
 
-
-<!--  <div class="col-md-12">-->
-
-<!--    <div class="row">-->
-<!--      <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let food of foods">-->
-<!--        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">-->
-<!--          <div class="list-card-image">-->
-<!--            <div class="star position-absolute"><span class="badge badge-success"> ({{food.sold}}+)</span></div>-->
-<!--            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i-->
-<!--              class="icofont-heart"></i></a></div>-->
-<!--            <div class="member-plan position-absolute"><span-->
-<!--              class="badge badge-dark">Promoted</span></div>-->
-<!--            <a [routerLink]="['/detail-food-add-to-cart', food.id]">-->
-<!--              <img src="{{food.image}}" class="img-fluid item-img">-->
-<!--            </a>-->
-<!--          </div>-->
-<!--          <div class="p-3 position-relative">-->
-<!--            <div class="list-card-body">-->
-<!--              <h6 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-food-add-to-cart', food.id]"-->
-<!--                                                             class="text-black">{{food.name}}</a></h6>-->
-<!--              <br>-->
-<!--&lt;!&ndash;                                <p class="text-gray mb-3">Price: {{product.price}}</p>&ndash;&gt;-->
-<!--              <a [routerLink]="['/detail-food-add-to-cart', food.merchant.id]" class="text-gray mb-3 time"><span-->
-<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i>-->
-<!--                </i> {{food.merchant.name}}</span> </a>-->
-<!--              <br>-->
-<!--              <br>-->
-<!--              &lt;!&ndash;                  <span class="float-right text-black-50"> {{}}</span>&ndash;&gt;-->
-<!--              <p class="text-gray mb-3"><span><i class="icofont-address-book"></i></span> {{food.merchant.address}}</p>-->
-
-<!--            </div>-->
-<!--            <div class="list-card-badge" style="text-align: right-->
-<!--">-->
-<!--              <span class="badge badge-success">Price</span> {{food.price}} VND-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-  <section class="featured spad">
+  <section class="featured spad" style="margin-top: -65px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="section-title">
-            <h2>Featured Food</h2>
+            <h2 style="font-weight: bold; font-size: 30px">Featured Food</h2>
           </div>
-          <!--        <div class="featured__controls" style="    display: flex;-->
-          <!--    justify-content: space-evenly;     width: 30%;-->
-          <!--    margin: 0 auto;">-->
-          <!--          <ul *ngFor="let category of categoryList">-->
-          <!--            <li data-filter=".oranges" (click)="showAllByCategory(category.id)">{{category.nameCategory}}</li>-->
-          <!--          </ul>-->
-          <!--        </div>-->
         </div>
       </div>
       <div class="row featured__filter">
         <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let food of foods">
-          <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+          <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm" style="width: 300px">
             <div class="list-card-image">
               <div class="star position-absolute"><span class="badge badge-success"> ({{food.sold}}+)</span></div>
               <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
@@ -276,7 +216,7 @@
             </div>
             <div class="p-3 position-relative">
               <div class="list-card-body">
-                <h5 class="mb-1" style="text-align: center" ><a  [routerLink]="['/detail-food-add-to-cart', food.id]"
+                <h5 class="mb-1" style="text-align: center;font-weight: bold;font-size: 20px;" ><a  [routerLink]="['/detail-food-add-to-cart', food.id]"
                                                                class="text-black">{{food.name}}</a></h5>
                 <br>
                 <!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
@@ -290,7 +230,7 @@
 
               </div>
               <div class="list-card-badge" style="text-align: right;font-size: 17px" >
-                <div>
+                <div style="margin-bottom: 5px;">
                   <i class="fa fa-heart" style="margin-right: 10px"></i>
                   <i class="fa fa-retweet" style="margin-right: 10px"></i>
                   <i class='fas fa-cart-plus' src="onTop" (click)="addToCart(food.id)"  style="margin-right: 10px" ></i></div>

@@ -23,7 +23,7 @@ import { DetailFoodAddToCartComponent } from './customer/detail-food-add-to-cart
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { MerchantDetailComponent } from './customer/merchant-detail/merchant-detail.component'
-
+import { ListMerchantComponent } from './homeshow/list-merchant/list-merchant.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +39,7 @@ import { MerchantDetailComponent } from './customer/merchant-detail/merchant-det
     CartComponent,
     DetailFoodAddToCartComponent,
     MerchantDetailComponent,
+    ListMerchantComponent
 
   ],
   imports: [

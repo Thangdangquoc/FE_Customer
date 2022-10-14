@@ -8,13 +8,13 @@
   <div class="header__top">
     <div class="container" style="    margin-bottom: -30px">
       <div class="row">
-        <div class="col-lg-6 col-md-6" routerLink="/detail-customer">
+        <div class="col-lg-6 col-md-6" >
           <div class="header__top__left">
             <ul>
-              <li><i class="fa fa-envelope"*ngIf="!checklogin()">Truanayangi@gmail.com</i> </li>
-              <img *ngIf="checklogin()" [src]="avatar" width="7%" height="7%" alt="">
-              <li><i *ngIf="checklogin()"></i> {{email}}</li>
-              <li>Free Shipping up 50%</li>
+              <li><i class="fa fa-envelope" *ngIf="!checklogin()" > Truanayangi@gmail.com</i> </li>
+            <img routerLink="/detail-customer" *ngIf="checklogin()" [src]="avatar" width="7%" height="7%" style="border-radius: 50%;">
+              <li routerLink="/detail-customer"><i  *ngIf="checklogin()"></i> {{email}} </li>
+              <li><i></i>Free Shipping up 50%</li>
             </ul>
           </div>
         </div>

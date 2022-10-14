@@ -51,11 +51,7 @@
         <div class="hero__search">
           <div class="hero__search__form">
             <form action="#">
-<!--              <div class="hero__search__categories">-->
-<!--                All Categories-->
-<!--                <span class="arrow_carrot-down"></span>-->
-<!--              </div>-->
-              <input type="text" class="form-control" placeholder="What do you need?" #find (input)="findFoodByLikeName(find.value)">
+              <input type="text" class="form-control" style="width: 440px;" placeholder="What do you need?" #find (input)="findFoodByLikeName(find.value)">
               <button type="submit" class="site-btn" style="width: 170px">SEARCH</button>
             </form>
           </div>
@@ -64,7 +60,7 @@
               <i class="fa fa-phone"></i>
             </div>
             <div class="hero__search__phone__text">
-              <h5>+0376.327.787</h5>
+              <h5 style="font-weight: bold; font-size: 15px">+0376.327.787</h5>
               <span>support 24/7 time</span>
             </div>
           </div>
@@ -80,25 +76,18 @@
   </div>
 </section>
 <!-- Featured Section Begin -->
-<section class="featured spad">
+<section class="featured spad" style="margin-top: -100px;">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="section-title">
-          <h2>Featured Food</h2>
+          <h2 style="font-size: 40px; font-weight: bold;">Featured Food</h2>
         </div>
-<!--        <div class="featured__controls" style="    display: flex;-->
-<!--    justify-content: space-evenly;     width: 30%;-->
-<!--    margin: 0 auto;">-->
-<!--          <ul *ngFor="let category of categoryList">-->
-<!--            <li data-filter=".oranges" (click)="showAllByCategory(category.id)">{{category.nameCategory}}</li>-->
-<!--          </ul>-->
-<!--        </div>-->
       </div>
     </div>
     <div class="row featured__filter">
       <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let food of foods">
-        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm" style="width: 300px">
           <div class="list-card-image">
             <div class="star position-absolute"><span class="badge badge-success"> ({{food.sold}}+)</span></div>
             <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
@@ -112,7 +101,7 @@
           </div>
           <div class="p-3 position-relative">
             <div class="list-card-body">
-              <h5 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-food', food.id]"
+              <h5 class="mb-1" style="text-align: center;font-weight: bold;font-size: 20px;"><a [routerLink]="['/detail-food', food.id]"
                                                              class="text-black">{{food.name}}</a></h5>
               <br>
               <!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
@@ -126,7 +115,7 @@
 
             </div>
             <div class="list-card-badge" style="text-align: right;font-size: 17px" >
-              <div>
+              <div style="margin-bottom: 5px;">
                 <i class="fa fa-heart" style="margin-right: 10px"></i>
                 <i class="fa fa-retweet" style="margin-right: 10px"></i>
                 <i class='fas fa-cart-plus' style="margin-right: 10px" (click)="checkCart()"></i></div>
@@ -147,20 +136,14 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="section-title">
-          <h2>Orther Merchant</h2>
+          <h2 style="font-size: 40px; font-weight: bold;">Orther Merchant</h2>
         </div>
-        <!--        <div class="featured__controls" style="    display: flex;-->
-        <!--    justify-content: space-evenly;     width: 30%;-->
-        <!--    margin: 0 auto;">-->
-        <!--          <ul *ngFor="let category of categoryList">-->
-        <!--            <li data-filter=".oranges">{{category.nameCategory}}</li>-->
-        <!--          </ul>-->
-        <!--        </div>-->
+
       </div>
     </div>
     <div class="row featured__filter">
       <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let merchant of merchantList">
-        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm" style="width: 300px">
           <div class="list-card-image">
             <div class="star position-absolute"><span class="badge badge-success"></span></div>
             <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
@@ -173,13 +156,13 @@
           </div>
           <div class="p-3 position-relative">
             <div class="list-card-body">
-              <h6 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-merchant', merchant.id]"
-                                                             class="text-black">{{merchant.name}}</a></h6>
+              <h4 class="mb-1" style="text-align: center;font-weight: bold;font-size: 20px;" ><a [routerLink]="['/detail-merchant', merchant.id]"
+                                                             class="text-black">{{merchant.name}}</a></h4>
               <br>
               <!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
               <a [routerLink]="['/detail-merchant',merchant.id]" class="text-gray mb-3 time"><span
                 class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-home"></i> {{merchant.name}}</span> </a>
+                class="icofont-home"></i> {{merchant.phoneNumber}}</span> </a>
               <br>
               <br>
               <!--                  <span class="float-right text-black-50"> {{}}</span>-->

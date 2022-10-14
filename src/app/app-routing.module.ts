@@ -11,6 +11,7 @@ import {DetailFoodAddToCartComponent} from "./customer/detail-food-add-to-cart/d
 import {DetailCustomerComponent} from "./customer/detail-customer/detail-customer.component";
 import * as path from "path";
 import {MerchantDetailComponent} from "./customer/merchant-detail/merchant-detail.component";
+import {ListMerchantComponent} from "./homeshow/list-merchant/list-merchant.component";
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
@@ -47,6 +48,10 @@ const routes: Routes = [{
   {
     path: 'login-merchant-detail/:id',
     component:MerchantDetailComponent,
+  },
+  {
+    path:'list-merchant',
+    component: ListMerchantComponent,
   }
 ];
 
