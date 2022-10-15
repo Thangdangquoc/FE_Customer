@@ -72,23 +72,16 @@ export class LoginComponent implements OnInit {
             timer: 1500
           })
           this.router.navigate(["/customer"])
-          console.log("ROLE_CUSTOMER")
+          console.log("CUSTOMER")
         }
         }else {
         console.log("lỗi")
-        // Swal.fire({
-        //   position: 'center',
-        //   icon: 'info',
-        //   title: 'The account is not exist or has been locked',
-        //   showConfirmButton: false,
-        //   timer: 2000
-        // })
         Swal.fire({
           position: 'center',
           icon: 'error',
           title: 'The account is not exist or has been locked',
-          // showConfirmButton: false,
-          timer: 2000
+          showConfirmButton: false,
+          timer: 1500
         })
       }
     })
